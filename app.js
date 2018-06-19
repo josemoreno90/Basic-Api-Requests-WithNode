@@ -10,8 +10,9 @@ console.log(message);
 
 
 function getProfile(username) {
+  try {
   // Connect to the API URL (https://teamtreehouse.com/username.json)
-  const request = https.get (`https://teamtreehouse.com/${username}.json`, response => {
+  const request = https.get (`teamtreehouse.com/${username}.json`, response => {
       let body = "";
       //Read the data
       response.on('data', data => {
@@ -27,6 +28,10 @@ function getProfile(username) {
       })
 
     })
+    request.on('error', error => console.error(`Problem with request: ${error.message}`));
+  } catch (error) {
+    console.error(error.message);
+  }
 }
 
 const users = process.argv.slice(2);
