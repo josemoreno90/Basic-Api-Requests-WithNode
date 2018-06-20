@@ -46,3 +46,5 @@ function get(username) {
     printError(error);
   }
 }
+
+module.exports.get = get;
